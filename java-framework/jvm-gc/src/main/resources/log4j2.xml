@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+  <Appenders>
+    <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+      <!--            <PatternLayout disableAnsi="false" pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=blue}"/>-->
+      <!--            <PatternLayout disableAnsi="false" pattern=" %d{yyyy-MM-dd HH:mm:ss.SSS} %5p - [%15.15t] %-40.40c{1.} : %m%n%ex"/>-->
+      <!--<PatternLayout disableAnsi="false"-->
+      <!--               pattern="%d{HH:mm:ss.SSS} [%thread] %level %logger{360} - %highlight{%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=blue}" />-->
+      <PatternLayout disableAnsi="false"
+        pattern="%yellow{%d{HH:mm:ss.SSS}} %X{ChannelTraceId} %highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=blue} %magenta{PID:%pid} %cyan{Thread:[%t]} %white{%logger:%line} - %highlight{%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=cyan}"/>
+
+      <!--<PatternLayout disableAnsi="false"-->
+      <!--pattern="%d{HH:mm:ss.SSS} - %highlight{%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=blue}"/>-->
+
+    </Console>
+
+  </Appenders>
+  <Loggers>
+    <!--        <Logger name="org.springframework" level="INFO"/>-->
+    <!--        <Logger name="org.mybatis" level="INFO"/>-->
+
+    <!--<Root level="trace">-->
+
+    <Root level="info">
+      <AppenderRef ref="ConsoleAppender"/>
+    </Root>
+  </Loggers>
+</Configuration>

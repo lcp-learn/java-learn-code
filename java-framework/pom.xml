@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>java-learn-code</artifactId>
+    <groupId>com.lcp.learn</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>java-framework</artifactId>
+
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>serialization-hessian</module>
+    <module>distributed-zookeeper</module>
+    <module>utils-collections</module>
+    <module>utils-io</module>
+    <module>serialization-json</module>
+    <module>cache-redis</module>
+    <module>db-mybatis</module>
+    <module>db-mybatis-plus</module>
+    <module>mq-kafka</module>
+    <module>logger-logback</module>
+
+    <module>jvm-classloader</module>
+    <module>jvm-proxy</module>
+    <module>jvm-concurrent</module>
+    <module>jvm-jol</module>
+    <module>jvm-gc</module>
+    <module>jvm-gc-jdk8</module>
+
+    <module>jvm-check-process-spb</module>
+    <module>proxy-cglib</module>
+    <module>utils-spring</module>
+
+
+  </modules>
+</project>
