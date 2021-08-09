@@ -2,7 +2,7 @@ package check.wrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * desc:    <br/>
