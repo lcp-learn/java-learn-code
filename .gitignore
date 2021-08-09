@@ -52,11 +52,11 @@ target/
 *.ipr
 *.iws
 .idea/
-.vscode/
 
 .project
 .classpath
 .factorypath
 .settings/
+
 .vscode/
 
