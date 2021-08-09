@@ -13,4 +13,92 @@
 
   <packaging>pom</packaging>
 
+  <modules>
+    <module>tcp-netty4</module>
+    <module>tcp-socket</module>
+    <module>tcp-reactive</module>
+    <module>tcp-gui</module>
+    <module>tcp-socket-server</module>
+
+    <module>servlet-web-simple</module>
+    <module>servlet-web-annotation</module>
+    <module>servlet-my-servlet-container</module>
+
+    <module>servlet-container-tomcat</module>
+    <module>servlet-container-tomcat-embed</module>
+    <module>servlet-container-undertow</module>
+    <module>jvm-nio</module>
+
+  </modules>
+
+
+  <properties>
+
+    <netty.version>4.1.54.Final</netty.version>
+    <reactor.version>3.4.1</reactor.version>
+
+    <servlet.version>4.0.1</servlet.version>
+    <tomcat.version>9.0.24</tomcat.version>
+    <undertow.version>2.0.25.Final</undertow.version>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.5.2</version>
+      <scope>test</scope>
+    </dependency>
+
+
+    <!-- 导入slf4j的接口包以及对应日志框架的驱动包 -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!--用于slf4j与log4j2保持桥接 -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <!-- 导入日志框架核心包与接口包 -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+
+    <!--apache-commons-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.11</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.15</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.56</version>
+    </dependency>
+
+  </dependencies>
+
 </project>

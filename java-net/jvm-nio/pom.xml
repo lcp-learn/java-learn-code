@@ -3,21 +3,18 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>java-framework</artifactId>
+    <artifactId>java-net</artifactId>
     <groupId>com.lcp.learn</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.lcp.learn.java.framework</groupId>
-  <artifactId>proxy-cglib</artifactId>
+  <groupId>com.lcp.learn.java.net</groupId>
+  <artifactId>jvm-nio</artifactId>
 
-  <dependencies>
-    <dependency>
-      <groupId>cglib</groupId>
-      <artifactId>cglib</artifactId>
-      <version>3.3.0</version>
-    </dependency>
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
 
-  </dependencies>
 </project>
