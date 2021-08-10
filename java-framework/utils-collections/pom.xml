@@ -12,12 +12,4 @@
   <groupId>com.lcp.learn.java.framework</groupId>
   <artifactId>utils-collections</artifactId>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>28.0-jre</version>
-    </dependency>
-  </dependencies>
-
 </project>

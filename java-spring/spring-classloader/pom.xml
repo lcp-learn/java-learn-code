@@ -12,13 +12,5 @@
   <groupId>com.lcp.learn.java.spring</groupId>
   <artifactId>spring-classloader</artifactId>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-  </dependencies>
 
 </project>

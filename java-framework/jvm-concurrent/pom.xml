@@ -12,8 +12,4 @@
   <groupId>com.lcp.learn.java.framework</groupId>
   <artifactId>jvm-concurrent</artifactId>
 
-  <dependencies>
-
-  </dependencies>
-
 </project>
