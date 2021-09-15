@@ -1,0 +1,16 @@
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+  #        log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  global-config:
+    banner: false
+    enable-sql-runner: true
+  mapper-locations: classpath:/daomapper/*Mapper.xml
+server:
+  port: 9878
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: aaaaaa
+    url: jdbc:mysql://127.0.0.1:3316/simple_order
+    username: root

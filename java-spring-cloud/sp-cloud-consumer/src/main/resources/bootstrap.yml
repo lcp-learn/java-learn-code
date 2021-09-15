@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-cloud-consumer
+  cloud:
+    zookeeper:
+      connectString: dev_zk:6181
+#      discovery:
+#        enable: true
+#        instanceHost: 127.0.0.1
+#        instancePort: 9876

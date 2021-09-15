@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <properties>
+        <Property name="file-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%level] %logger{36} - %msg%n</Property>
+        <property name="fileName1">/Users/lichunpeng/tmp/log/spb-docker.log</property>
+        <property name="filePattern1">/Users/lichunpeng/tmp/log/spb-docker-%d{yyyy-MM-dd-HH}.log</property>
+    </properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout disableAnsi="false"
+                           pattern="%yellow{%d{HH:mm:ss.SSS}} %X{ChannelTraceId} %highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=blue} %magenta{PID:%pid} %cyan{Thread:[%t]} %white{%logger:%line} - %highlight{%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=cyan}" />
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="${fileName1}" filePattern="${filePattern1}">
+
+            <PatternLayout>
+                <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %l - %m%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+                <SizeBasedTriggeringPolicy size="250MB" />
+            </Policies>
+
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <!--        <Logger name="org.springframework" level="INFO"/>-->
+        <!--        <Logger name="org.mybatis" level="INFO"/>-->
+
+        <!--<Root level="trace">-->
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="RollingFile" />
+        </Root>
+    </Loggers>
+</Configuration>

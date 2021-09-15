@@ -1,0 +1,24 @@
+FROM ubuntu:focal
+
+#设定时区
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' >/etc/timezone
+
+# https://cdn.azul.com/zulu/bin/zulu15.27.17-ca-jdk15.0.0-linux_x64.tar.gz
+ADD zulu15.27.17-ca-jdk15.0.0-linux_x64.tar.gz /jdk/
+# COPY zulu15.27.17-ca-jdk15.0.0-linux_x64.tar.gz /jdk/zulu15.27.17-ca-jdk15.0.0-linux_x64.tar.gz
+# RUN tar -zxvf /jdk/zulu15.27.17-ca-jdk15.0.0-linux_x64.tar.gz -C /jdk/
+
+ENV JAVA_HOME /jdk/zulu15.27.17-ca-jdk15.0.0-linux_x64
+ENV PATH $PATH:$JAVA_HOME/bin
+
+# RUN echo "" > /etc/apt/sources.list
+# RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN echo "deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN apt update
+
+
+# docker build -t lcp-zulu15:1.0 .

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-provider
+  cache:
+    cache-names: simple-provider-cache
+    caffeine:
+      spec: initialCapacity=10,maximumSize=500,expireAfterAccess=600s # 10分钟过期
+  cloud:
+    zookeeper:
+      connectString: 127.0.0.1:6181
+      discovery:
+        enable: true
+#        instanceHost: 127.0.0.1
+#        instancePort: 9875

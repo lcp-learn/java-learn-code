@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.lcp.learn</groupId>
-  <artifactId>java-learn-code</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <parent>
+    <artifactId>java-learn-code</artifactId>
+    <groupId>com.lcp.learn</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>java-dubbo</artifactId>
+
   <modules>
-    <module>java-base</module>
-    <module>java-framework</module>
-    <module>java-net</module>
-    <module>java-spring</module>
-    <module>java-spring-boot</module>
-    <module>java-spring-cloud</module>
-    <module>java-dubbo</module>
+    <module>api</module>
+    <module>consumer</module>
+    <module>provider</module>
+    <module>provider-spb</module>
+    <module>provider-spb-mini</module>
+    <module>provider-service</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -50,37 +54,31 @@
   </pluginRepositories>
 
   <properties>
-    <maven.test.skip>true</maven.test.skip>
 
+    <maven.test.skip>true</maven.test.skip>
+    <jdk.version>1.8</jdk.version>
     <encoding>UTF-8</encoding>
 
-    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-
-    <jdk.version>17</jdk.version>
     <maven.compiler.source>${jdk.version}</maven.compiler.source>
     <maven.compiler.target>${jdk.version}</maven.compiler.target>
     <maven.compiler.compilerVersion>${jdk.version}</maven.compiler.compilerVersion>
+    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-    <spring.version>5.3.9</spring.version>
+    <slf4j.version>1.7.26</slf4j.version>
+    <log4j.version>2.11.2</log4j.version>
+    <junit.version>5.6.0</junit.version>
 
-    <slf4j.version>1.7.32</slf4j.version>
-    <log4j.version>2.14.1</log4j.version>
-    <junit.version>5.7.2</junit.version>
+    <!--<dubbo.version>2.7.4.1</dubbo.version>-->
+    <dubbo.version>2.7.8</dubbo.version>
+    <redis.version>3.2.0</redis.version>
+    <curator.version>5.1.0</curator.version>
 
-    <commons-lang3.version>3.12.0</commons-lang3.version>
-    <commons-io.version>2.11.0</commons-io.version>
-    <commons-codec.version>1.15</commons-codec.version>
-    <commons-collections4.version>4.4</commons-collections4.version>
-    <httpclient.version>4.5.13</httpclient.version>
-    <commons-configuration2.version>2.7</commons-configuration2.version>
-    <commons-beanutils.version>1.9.4</commons-beanutils.version>
-    <joda-time.version>2.10.10</joda-time.version>
-    <fastjson.version>1.2.78</fastjson.version>
-    <guava.version>30.1.1-jre</guava.version>
+    <!--    spring -->
+    <spring-boot.version>2.4.2</spring-boot.version>
+    <spring.version>5.3.3</spring.version>
 
   </properties>
-
 
   <build>
     <resources>
@@ -105,7 +103,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
           <source>${jdk.version}</source>
           <target>${jdk.version}</target>
@@ -163,9 +161,65 @@
 
   </build>
 
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-bom</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- dubbo -->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+      </dependency>
+
+      <!--    redis -->
+      <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>${redis.version}</version>
+      </dependency>
+
+      <!-- dubbo zk -->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <exclusions>
+          <!--  排除log4j1的方式  -->
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+          <!--  排除logback的方式  -->
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
 
-    <!--   ============================================= junit-->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -173,110 +227,36 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <groupId>org.junit.jupiter</groupId>
-      <scope>test</scope>
-      <version>${junit.version}</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>junit-vintage-engine</artifactId>
-      <groupId>org.junit.vintage</groupId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-core</artifactId>
-      <version>2.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!--   =================================================== log-->
-    <!-- 导入slf4j的接口包以及对应日志框架的驱动包 -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-
-    <!--用于slf4j与log4j2保持桥接 -->
+    <!--  桥接：告诉Slf4j使用Log4j2  -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${log4j.version}</version>
     </dependency>
-
-    <!-- 导入日志框架核心包与接口包 -->
+    <!-- 桥接：告诉commons-logging使用Log4j2 -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
+      <artifactId>log4j-jcl</artifactId>
       <version>${log4j.version}</version>
     </dependency>
+    <!--  log4j2  api  -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
       <version>${log4j.version}</version>
     </dependency>
-
-    <!--  =================================================  commons-->
+    <!--  log4j2  core  -->
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>${commons-io.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>${commons-codec.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-collections4</artifactId>
-      <version>${commons-collections4.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>${httpclient.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-configuration2</artifactId>
-      <version>${commons-configuration2.version}</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-      <version>${commons-beanutils.version}</version>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.16</version>
     </dependency>
-
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>${joda-time.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>${fastjson.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>${guava.version}</version>
-    </dependency>
-
 
   </dependencies>
 

@@ -1,0 +1,17 @@
+server:
+  port: 8393
+
+spring:
+  application:
+    name: sp-cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        # netty 路由过滤器，http或https开头
+        - id: provider-route
+          uri: http://127.0.0.1:8391
+          predicates:
+            - Path=/provider1/**
+          filters:
+            #转发请求时去掉1级前缀
+            - StripPrefix=1

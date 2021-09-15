@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>java-spring-boot</artifactId>
+    <groupId>com.lcp.learn</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>sp-boot-webflux</artifactId>
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <profiles.active>dev</profiles.active>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <profiles.active>prod</profiles.active>
+      </properties>
+    </profile>
+
+  </profiles>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources/</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources-${profiles.active}</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+          <mainClass>com.lcp.learn.spring.spb.webflux.WebfluxStarter</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.experimental</groupId>-->
+    <!--      <artifactId>spring-graalvm-native-buildtools</artifactId>-->
+    <!--      <version>${spring-graalvm-native.version}</version>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.experimental</groupId>-->
+    <!--      <artifactId>spring-graalvm-native-build</artifactId>-->
+    <!--      <version>${spring-graalvm-native.version}</version>-->
+    <!--      &lt;!&ndash;      <type>pom</type>&ndash;&gt;-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.experimental</groupId>-->
+    <!--      <artifactId>spring-graalvm-native-tools</artifactId>-->
+    <!--      <version>${spring-graalvm-native.version}</version>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.experimental</groupId>-->
+    <!--      <artifactId>spring-graalvm-native-maven-plugin</artifactId>-->
+    <!--      <version>${spring-graalvm-native.version}</version>-->
+    <!--    </dependency>-->
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+      <!--<exclusions>-->
+      <!--    <exclusion>-->
+      <!--        <groupId>org.springframework.boot</groupId>-->
+      <!--        <artifactId>spring-boot-starter-reactor-netty</artifactId>-->
+      <!--    </exclusion>-->
+      <!--</exclusions>-->
+    </dependency>
+
+    <!--        <dependency>-->
+    <!--            <groupId>io.projectreactor.netty</groupId>-->
+    <!--            <artifactId>reactor-netty</artifactId>-->
+    <!--            <version>1.0.2</version>-->
+    <!--        </dependency>-->
+
+
+    <!--
+
+    在Java 7推出异步I/O库，以及Servlet3.1增加了对异步I/O的支持之后，
+    Tomcat等Servlet容器也随后开始支持异步I/O，
+    然后Spring WebMVC也增加了对Reactor库的支持，
+
+    所以,
+    如果不是用spring-boot-starter-WebFlux，而是增加reactor-core的依赖的话，
+    仍然可以用注解的方式开发基于Tomcat的响应式应用。
+
+    -->
+
+    <!--<dependency>-->
+    <!--    <groupId>io.projectreactor</groupId>-->
+    <!--    <artifactId>reactor-test</artifactId>-->
+    <!--    <version>3.4.0</version>-->
+    <!--    <scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--    <groupId>io.projectreactor</groupId>-->
+    <!--    <artifactId>reactor-core</artifactId>-->
+    <!--    <version>3.4.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--    <groupId>org.springframework.boot</groupId>-->
+    <!--    <artifactId>spring-boot-starter-web</artifactId>-->
+    <!--</dependency>-->
+
+
+  </dependencies>
+
+
+</project>
