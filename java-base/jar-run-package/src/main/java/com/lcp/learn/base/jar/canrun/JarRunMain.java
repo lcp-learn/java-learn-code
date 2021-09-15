@@ -17,5 +17,13 @@ public class JarRunMain {
   public static void main(String[] args) {
 
     logger.info("{}", RandomStringUtils.random(32, true, true));
+    var sss = """
+        asdasdasdasdasdasd
+        asdasdasdasdasdasd
+        asdasdasdasdasdasd
+        asdasdasdasdasdasd
+        """;
+
+    logger.info("sss:{}", sss);
   }
 }

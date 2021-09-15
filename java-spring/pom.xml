@@ -29,6 +29,8 @@
     <module>spring-cache</module>
     <module>spring-mvc-2</module>
 
+    <module>spb-war</module>
+
   </modules>
 
   <properties>
@@ -53,6 +55,7 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
         <exclusions>
           <exclusion>
             <groupId>commons-logging</groupId>
